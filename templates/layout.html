@@ -3,8 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>양재 인사이드</title>
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="/">로고</a>
+            {% if session %}
+                <p>{{ session.username }}님</p>
+                <a href="/logout">로그아웃</a>
+            {% else %}
+                <p>{{ request.remote_addr }}</p>
+                <a href="/login">로그인</a>
+            {% endif %}
+        </nav>
+    </header>
+    <hr>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <hr>
+    <footer>
+        <h1>푸터</h1>
+    </footer>
+    <script src="/static/setting.js"></script>
 </body>
 </html>
