@@ -1,13 +1,14 @@
 {% extends 'layout.html' %}
 {% block title %}로그인{% endblock %}
 {% block content %}
-<div>
-    <h2>로그인</h2>
-    <h2>아직 별도의 보안기능 없음</h2>
+<div class="auth">
+    <h1>로그인</h1>
+    {% include "error_form.html" %}
     <form method="post" action="/login">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required><br>
-        <button type="submit">Login</button>
+        {{ form.csrf_token }}
+        <input type="text" class="form-control" name="user_id" id="user_id" placeholder="id를 입력하세요" value="{{ form.user_id.data or '' }}">
+        <input type="password" class="form-control" name="password" id="password" placeholder="password" value="{{ form.password.data or '' }}">
+        <button type="submit">로그인</button>
     </form>
 </div>
 {% endblock %}

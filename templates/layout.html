@@ -9,7 +9,7 @@
     <header>
         <nav>
             <a href="/">로고</a>
-            {% if session %}
+            {% if session.username %}
                 <p>{{ session.username }}님</p>
                 <a href="/logout">로그아웃</a>
             {% else %}

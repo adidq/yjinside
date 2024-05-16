@@ -1,0 +1,21 @@
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-warning" role="alert">
+                    <strong>{{ message }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    {% if form.errors %}
+        <div class="alert alert-warning" role="alert">
+        {% for field, errors in form.errors.items() %}
+            <strong>{{ form[field].label }}</strong>
+            <ul>
+                {% for error in errors%}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </div>
+{% endif %}
