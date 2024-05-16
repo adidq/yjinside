@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block title %}회원가입{% endblock %}
+{% block content %}
+<div class="auth">
+    <h1>회원가입</h1>
+    {% include "error_form.html" %}
+    <form method="post" action="/register">
+        {{ form.csrf_token }}
+        <input type="text" class="form-control" name="user_id" id="user_id" placeholder="id를 입력하세요" value="{{ form.user_id.data or '' }}">
+        <input type="text" class="form-control" name="user_name" id="user_name" placeholder="이름을 입력하세요" value="{{ form.user_name.data or '' }}">
+        <input type="email" class="form-control" name="user_email" id="user_email" placeholder="이메일을 입력하세요" value="{{ form.user_email.data or '' }}">
+        <input type="password" class="form-control" name="password" id="password" placeholder="비밀번호를 입력하세요" value="{{ form.password.data or '' }}">
+        <button type="submit">회원가입</button>
+    </form>
+</div>
+{% endblock %}

@@ -5,6 +5,7 @@ import hashlib
 
 _auth = Blueprint('auth', __name__, url_prefix="/")
 
+#로그인
 @_auth.route('/login', methods=['GET', 'POST'])
 def login():
     form = loginForm()
@@ -33,6 +34,16 @@ def login():
             return render_template('login.html', form=form)
     return render_template('login.html', form=form)
 
+#회원가입
+@_auth.route('/register')
+def register():
+    #로그인된 유저가 접속시도시 홈으로
+    if 'username' in session:
+        return redirect('/')
+    #가입시 이메일인증
+    return "개발중"
+
+#로그아웃
 @_auth.route('/logout')
 def logout():
     if session:
@@ -40,4 +51,3 @@ def logout():
         return redirect('/')
     else:
         return redirect('/')
-    
