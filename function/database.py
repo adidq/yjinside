@@ -61,3 +61,23 @@ def makeUserAccount(user_id, user_name, user_email, user_password):
     cur.close()
     conn.close()
     return
+
+def findGalllist():
+    conn = psycopg2.connect(host=db_host, user=db_username, password=db_password, dbname=db_name)
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM gallery")
+    result = cur.fetchall()
+    conn.close()
+    return result
+
+def findGall(gall_id):
+    conn = psycopg2.connect(host=db_host, user=db_username, password=db_password, dbname=db_name)
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM gallery WHERE gall_id = %s", (gall_id,))
+    #갤러리 게시글 15개 조회
+    result = cur.fetchall()
+    conn.close()
+    if result:
+        return result[0]
+    else:
+        return False

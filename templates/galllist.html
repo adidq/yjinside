@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block title %}겔러리 리스트{% endblock %}
+{% block content %}
+<div>
+    <h1>겔러리 리스트</h1>
+    {% for gallery in list %}
+    <li>
+        <a href="/gall/{{gallery[3]}}">({{ gallery[3] }})<strong>{{ gallery[2] }}</strong> by {{ gallery[4][0] }}</a>
+    </li>
+    {% endfor %}
+</div>
+{% endblock %}

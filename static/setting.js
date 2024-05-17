@@ -2,6 +2,8 @@
 // spa, darkmode
 function setDark() {
     //다크모드 토클기능
+    //data-theme="dark"
+    //data-theme="light
 }
 
 function setSpa() {
