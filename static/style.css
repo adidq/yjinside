@@ -1,3 +1,11 @@
 main {
     margin: 1%;
 }
+
+:root {
+    --bulma-yangjae: #1C1F8A;
+}
+
+.navbar {
+    background-color: var(--bulma-yangjae);
+}

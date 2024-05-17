@@ -1,16 +1,22 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-        <a class="navbar-item" href="/">로고</a>
+        <a class="navbar-item has-text-white is-size-3" href="/"><strong>양재</strong></a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
     </div>
-    <div id="navbarBasicExample" class="navbar-menu">
+    <div id="navbarMenu" class="navbar-menu">
         <div class="navbar-start">
-            <a href="/galllist" class="navbar-item">겔러리 리스트</a>
+            <a href="/galllist" class="navbar-item is-size-4 has-text-white"><strong>겔러리 리스트</strong></a>
         </div>
         <div class="navbar-end">
             <div class="navbar-item">
                 {% if session.username %}
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">{{ session.username }}</a>
+                    <a class="navbar-link has-text-white"><strong>{{ session.username }}</strong></a>
                     <div class="navbar-dropdown">
                         <a class="navbar-item">프로필</a>
                         <a class="navbar-item">설정</a>
