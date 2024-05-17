@@ -1,5 +1,5 @@
 from flask import *
-from function.forms import loginForm
+from function.forms import loginForm, registerForm
 import function.database
 import hashlib
 
@@ -35,13 +35,30 @@ def login():
     return render_template('login.html', form=form)
 
 #회원가입
-@_auth.route('/register')
+@_auth.route('/register', methods=['GET', 'POST'])
 def register():
+    form = registerForm()
     #로그인된 유저가 접속시도시 홈으로
     if 'username' in session:
         return redirect('/')
-    #가입시 이메일인증
-    return "개발중"
+    if request.method == 'POST' and form.validate_on_submit():
+        user_id = request.form['user_id']
+        user_name  = request.form['user_name']
+        user_email = request.form['user_email']
+        password = request.form['password']
+        if function.database.findUserIdviaUserEmail(user_email) is not False:
+            flash('이미 사용 중인 이메일입니다')
+            return render_template('register.html', form=form)
+        else:
+            if function.database.findUserEmailviaUserId(user_id) is not False:
+                flash('이미 사용 중인 id입니다')
+                return render_template('register.html', form=form)
+            else:
+                hashed_password = hashlib.sha256(password.encode()).hexdigest()
+                function.database.makeUserAccount(user_id, user_name, user_email, hashed_password)
+                session['username'] = user_name
+                return redirect('/')
+    return render_template('register.html', form=form)
 
 #로그아웃
 @_auth.route('/logout')

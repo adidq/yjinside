@@ -30,3 +30,34 @@ def findUserNameviaUserId(user_id):
         return result[0]
     else:
         return False
+
+def findUserIdviaUserEmail(user_email):
+    conn = psycopg2.connect(host=db_host, user=db_username, password=db_password, dbname=db_name)
+    cur = conn.cursor()
+    cur.execute("SELECT user_id FROM users WHERE user_email = %s", (user_email,))
+    result = cur.fetchone()
+    conn.close()
+    if result:
+        return result[0]
+    else:
+        return False
+    
+def findUserEmailviaUserId(user_id):
+    conn = psycopg2.connect(host=db_host, user=db_username, password=db_password, dbname=db_name)
+    cur = conn.cursor()
+    cur.execute("SELECT user_email FROM users WHERE user_id = %s", (user_id,))
+    result = cur.fetchone()
+    conn.close()
+    if result:
+        return result[0]
+    else:
+        return False
+
+def makeUserAccount(user_id, user_name, user_email, user_password):
+    conn = psycopg2.connect(host=db_host, user=db_username, password=db_password, dbname=db_name)
+    cur = conn.cursor()
+    cur.execute("INSERT INTO users (user_id, user_name, user_email, user_perm, user_password) VALUES (%s, %s, %s, %s, %s)", (user_id, user_name, user_email, 1, user_password))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return

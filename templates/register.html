@@ -3,7 +3,7 @@
 {% block content %}
 <div class="auth">
     <h1>회원가입</h1>
-    {% include "error_form.html" %}
+    {% include 'error_form.html' %}
     <form method="post" action="/register">
         {{ form.csrf_token }}
         <input type="text" class="form-control" name="user_id" id="user_id" placeholder="id를 입력하세요" value="{{ form.user_id.data or '' }}">

@@ -3,23 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <link rel="stylesheet" href="/static/style.css">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
     <header>
-        <nav>
-            <a href="/">로고</a>
-            {% if session.username %}
-                <p>{{ session.username }}님</p>
-                <a href="/logout">로그아웃</a>
-            {% else %}
-                <p>{{ request.remote_addr }}</p>
-                <a href="/login">로그인</a>
-            {% endif %}
-        </nav>
+        {% include 'navbar.html' %}
+        <hr>
     </header>
-    <hr>
     <main>
         {% block content %}{% endblock %}
     </main>
