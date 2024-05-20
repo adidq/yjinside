@@ -74,10 +74,31 @@ def findGall(gall_id):
     conn = psycopg2.connect(host=db_host, user=db_username, password=db_password, dbname=db_name)
     cur = conn.cursor()
     cur.execute("SELECT * FROM gallery WHERE gall_id = %s", (gall_id,))
-    #갤러리 게시글 15개 조회
     result = cur.fetchall()
     conn.close()
     if result:
         return result[0]
+    else:
+        return False
+
+def findArticleviaArticleIdandGallId(gall_id, article_id):
+    conn = psycopg2.connect(host=db_host, user=db_username, password=db_password, dbname=db_name)
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM article WHERE article_gall = %s AND article_id = %s", (gall_id, article_id))
+    result = cur.fetchall()
+    conn.close()
+    if result:
+        return result[0]
+    else:
+        return False
+    
+def findArticleListviaGallId(gall_id):
+    conn = psycopg2.connect(host=db_host, user=db_username, password=db_password, dbname=db_name)
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM article WHERE article_gall = %s", (gall_id,))
+    result = cur.fetchall()
+    conn.close()
+    if result:
+        return result
     else:
         return False

@@ -1,11 +1,21 @@
 {% extends 'layout.html' %}
-{% block title %}{{data[2]}}{% endblock %}
+{% block title %}{{galldata[2]}}{% endblock %}
 {% block content %}
 <div>
-    <h1 class="is-size-1 has-text-white">{{data[2]}}</h1>
-    <h1 class="is-size-4">매니저: {{data[4][0]}}</h1>
-    <h1>겔러리 생성일: {{ data[1] }}</h1>
+    <h1 class="title">{{galldata[2]}}(G)</h1>
+    <h1 class="is-size-4">매니저: {{galldata[4][0]}}</h1>
+    <h1>겔러리 생성일: {{ galldata[1] }}</h1>
     <hr>
-    <h1>여기에 게시글 목록</h1>
+    {% if articlelist %}
+        <ul>
+            {% for list in articlelist %}
+            <li>
+                <a href="/article/{{galldata[3]}}/{{list[1]}}"><strong>{{ list[2] }}</strong> | {{ list[4][0] }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+    <h1>이 겔러리에는 게시글이 없습니다.</h1>
+    {% endif %}
 </div>
 {% endblock %}

@@ -12,14 +12,12 @@ function setSpa() {
 
 $(document).ready(function() {
     $('#toggleTheme').click(function() {
-        var $themeElement = $('html');
-        var currentTheme = $themeElement.attr('data-theme');
-
+        var currentTheme = $('html').attr('data-theme');
         if (currentTheme === 'light') {
-            $themeElement.attr('data-theme', 'dark');
+            $('html').attr('data-theme', 'dark');
             $('#toggleTheme').text('라이트 테마로');
         } else {
-            $themeElement.attr('data-theme', 'light');
+            $('html').attr('data-theme', 'light');
             $('#toggleTheme').text('다크 테마로');
         }
     });

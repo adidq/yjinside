@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block title %}{{articledata[2]}}{% endblock %}
+{% block content %}
+<div>
+    <h1 class="title">{{articledata[2]}}</h1>
+    <h1 class="subtitle">{{ articledata[4][0] }}</h1>
+    <h1 class="subtitle">{{ galldata[2] }}</h1>
+    <hr>
+    <article>
+        {{ articledata[6] }}
+    </article>
+</div>
+{% endblock %}
