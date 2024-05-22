@@ -14,15 +14,15 @@ def article(gall_id, article_id):
     #post요청 처리
     if request.method == 'POST':
         #유저정보 확인
-        if articledata[4] is not session.get('id'):
-            return f"게시글을 수정할 권한이 없습니다. 작성자:{articledata[4][0]}"
-        
-        title = request.form['title']
-        content = request.form['content']
-        function.database.updateArticle(title, content, article_id, gall_id)
-        return redirect(f'/article/{gall_id}/{article_id}')
+        if articledata[4] == session.get('id'):
+            title = request.form['title']
+            content = request.form['content']
+            function.database.updateArticle(title, content, article_id, gall_id)
+            return redirect(f'/article/{gall_id}/{article_id}')
+        else:
+            return f"게시글을 수정할 권한이 없습니다. 작성자:{articledata[4]}, 너:{session.get('id')}"
     #유저정보 확인
     if articledata[4] == session.get('id'):
         return render_template('edit/article.html', articledata=articledata)
     else:
-        return f"게시글을 수정할 권한이 없습니다. 작성자:{articledata[4][0]}"
+        return f"게시글을 수정할 권한이 없습니다. 작성자:{articledata[4]}"

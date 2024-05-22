@@ -2,11 +2,23 @@
 {% block title %}겔러리 리스트{% endblock %}
 {% block content %}
 <div>
-    <h1>겔러리 리스트</h1>
-    {% for gallery in list %}
-    <li>
-        <a href="/gall/{{gallery[3]}}">({{ gallery[3] }})<strong>{{ gallery[2] }}</strong> by {{ gallery[4][0] }}</a>
-    </li>
-    {% endfor %}
+    <h1 class="title">겔러리 리스트</h1>
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>겔러리 이름</td>
+                <td>겔러리 관리자</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for gallery in list %}
+            <tr>
+                <td><a href="/gall/{{gallery[3]}}">{{ gallery[2] }}</a></td>
+                <td>{{ gallery[4][0] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}

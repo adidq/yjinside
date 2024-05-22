@@ -8,13 +8,24 @@
     <hr>
     <a href="/post/article/{{galldata[3]}}">글 쓰기</a>
     {% if articlelist %}
-        <ul>
-            {% for list in articlelist %}
-            <li>
-                <a href="/article/{{galldata[3]}}/{{list[1]}}"><strong>{{ list[2] }}</strong> | {{ list[4] }}</a>
-            </li>
-            {% endfor %}
-        </ul>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                </tr>
+            </thead>
+            <tfoot>
+                {% for list in articlelist %}
+                <tr>
+                    <td><a href="/article/{{galldata[3]}}/{{list[1]}}">{{ list[2] }}</a></td>
+                    <td>{{ list[4] }}</td>
+                    <td>{{ list[5] }}</td>
+                </tr>
+                {% endfor %}
+            </tfoot>
+        </table>
     {% else %}
     <h1>이 겔러리에는 게시글이 없습니다.</h1>
     {% endif %}

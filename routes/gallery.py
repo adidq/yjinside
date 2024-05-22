@@ -14,16 +14,20 @@ def gall(gallid):
     if galldata == False:
         return "없는 겔러리입니다."
     articlelist = function.database.findArticleListviaGallId(gallid)
+
+    #값 없으면 정렬안함
+    if articlelist is not False:
+        articlelist.sort(key=lambda x: x[5], reverse=True)
     return render_template('gall/gallery.html', galldata=galldata, articlelist=articlelist)
 
 @_gallery.route('/article/<gallid>/<articleid>')
 def article(gallid, articleid):
     if articleid == None:
         return redirect(f'/gall/{gallid}')
-    galldata = function.database.findGall(gallid)
-    if galldata == False:
-        return "없는 겔러리입니다."
+    #galldata = function.database.findGall(gallid)
+    #if galldata == False:
+    #    return "없는 겔러리입니다."
     articledata = function.database.findArticleviaArticleIdandGallId(gallid, articleid)
     if articledata == False:
         return "없는 게시글입니다."
-    return render_template('gall/article.html', galldata=galldata, articledata=articledata)
+    return render_template('gall/article.html', articledata=articledata)
