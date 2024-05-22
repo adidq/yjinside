@@ -6,11 +6,12 @@
     <h1 class="is-size-4">매니저: {{galldata[4][0]}}</h1>
     <h1>겔러리 생성일: {{ galldata[1] }}</h1>
     <hr>
+    <a href="/post/article/{{galldata[3]}}">글 쓰기</a>
     {% if articlelist %}
         <ul>
             {% for list in articlelist %}
             <li>
-                <a href="/article/{{galldata[3]}}/{{list[1]}}"><strong>{{ list[2] }}</strong> | {{ list[4][0] }}</a>
+                <a href="/article/{{galldata[3]}}/{{list[1]}}"><strong>{{ list[2] }}</strong> | {{ list[4] }}</a>
             </li>
             {% endfor %}
         </ul>

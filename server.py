@@ -14,6 +14,10 @@ import routes.auth
 app.register_blueprint(routes.auth._auth)
 import routes.gallery
 app.register_blueprint(routes.gallery._gallery)
+import routes.edit
+app.register_blueprint(routes.edit._edit)
+import routes.post
+app.register_blueprint(routes.post._post)
 
 if __name__ == '__main__':
     app.run(debug=True)

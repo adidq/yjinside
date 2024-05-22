@@ -102,3 +102,33 @@ def findArticleListviaGallId(gall_id):
         return result
     else:
         return False
+
+def updateArticle(title, content, id, gall_id):
+    conn = psycopg2.connect(host=db_host, user=db_username, password=db_password, dbname=db_name)
+    cur = conn.cursor()
+    cur.execute("UPDATE article SET article_name = %s, article_content = %s WHERE article_id = %s AND article_gall = %s", (title, content, id, gall_id))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return
+
+
+def findLastArticleViaGallId(gall_id):
+    conn = psycopg2.connect(host=db_host, user=db_username, password=db_password, dbname=db_name)
+    cur = conn.cursor()
+    cur.execute("SELECT MAX(article_id) FROM article WHERE article_gall = %s", (gall_id))
+    result = cur.fetchall()[0][0]
+    conn.close()
+    if result is not None:
+        return result
+    else:
+        return False
+    
+def postArticle(article_id, article_name, article_content, article_manager, article_gall):
+    conn = psycopg2.connect(host=db_host, user=db_username, password=db_password, dbname=db_name)
+    cur = conn.cursor()
+    cur.execute("INSERT INTO article (article_id, article_name, article_gall, article_managers, article_content) VALUES (%s, %s, %s, %s, %s)", (article_id, article_name, article_gall, article_manager, article_content))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return

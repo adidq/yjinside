@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block title %}글쓰기{% endblock %}
+{% block content %}
+<div>
+    {% if not session.id %}
+    <strong>비로그인으로 활동중입니다! ip가 기록되며 편집이 불가능합니다.</strong>
+    {% endif %}
+    <form method="post" action="/post/article/{{gall_id}}">
+        <h1>제목: </h1>
+        <textarea id="title" name="title"></textarea>
+        <h1>내용: </h1>
+        <textarea id="content" name="content"></textarea>
+        <button type="submit">올리기</button>
+    </form>
+</div>
+{% endblock %}

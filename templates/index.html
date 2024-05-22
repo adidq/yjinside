@@ -3,6 +3,11 @@
 {% block content %}
 <div>
     <h1 class="is-size-1">홈</h1>
-    <h2 class="is-size-3">비로그인 활동시 ip가 기록됩니다.</h2>
+    {% if session.id %}
+        <h2 class="is-size-3">아이디:{{session.id}}</h2>
+        <h2 class="is-size-3">유저네임:{{session.username}}</h2>
+    {% else %}
+        <h2 class="is-size-3">비로그인 활동시 ip가 기록됩니다.</h2>
+    {% endif %}
 </div>
 {% endblock %}

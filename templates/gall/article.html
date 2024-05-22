@@ -3,9 +3,12 @@
 {% block content %}
 <div>
     <h1 class="title">{{articledata[2]}}</h1>
-    <h1 class="subtitle">{{ articledata[4][0] }}</h1>
+    <h1 class="subtitle">{{ articledata[4] }}</h1>
     <h1 class="subtitle">{{ galldata[2] }}</h1>
     <hr>
+    {% if articledata[4] == session.id %}
+    <a href="/edit/article/{{galldata[3]}}/{{articledata[1]}}">편집하기</a>
+    {% endif %}
     <article>
         {{ articledata[6] }}
     </article>

@@ -27,6 +27,7 @@ def login():
         #검증
         if hashed_password == hashed_req_password:
             username = function.database.findUserNameviaUserId(user_id)
+            session['id'] = user_id
             session['username'] = username
             return redirect('/')
         else:
@@ -56,6 +57,7 @@ def register():
             else:
                 hashed_password = hashlib.sha256(password.encode()).hexdigest()
                 function.database.makeUserAccount(user_id, user_name, user_email, hashed_password)
+                session['id'] = user_id
                 session['username'] = user_name
                 return redirect('/')
     return render_template('register.html', form=form)
