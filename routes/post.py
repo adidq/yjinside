@@ -7,7 +7,7 @@ _post = Blueprint('post', __name__, url_prefix="/post")
 @_post.route('/article/<gall_id>', methods=['GET', 'POST'])
 def article(gall_id):
     if function.database.findGall(gall_id) == False:
-        return "없는 겔러리입니다."    
+        return "없는 갤러리입니다."    
     lastnum = function.database.findLastArticleViaGallId(gall_id)
     if lastnum == False:
         article_id = 1

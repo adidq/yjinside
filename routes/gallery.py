@@ -12,7 +12,7 @@ def galllist():
 def gall(gallid):
     galldata = function.database.findGall(gallid)
     if galldata == False:
-        return "없는 겔러리입니다."
+        return "없는 갤러리입니다."
     articlelist = function.database.findArticleListviaGallId(gallid)
 
     #값 없으면 정렬안함
@@ -26,7 +26,7 @@ def article(gallid, articleid):
         return redirect(f'/gall/{gallid}')
     #galldata = function.database.findGall(gallid)
     #if galldata == False:
-    #    return "없는 겔러리입니다."
+    #    return "없는 갤러리입니다."
     articledata = function.database.findArticleviaArticleIdandGallId(gallid, articleid)
     if articledata == False:
         return "없는 게시글입니다."

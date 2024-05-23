@@ -4,7 +4,7 @@
 <div>
     <h1 class="title">{{galldata[2]}}(G)</h1>
     <h1 class="is-size-4">매니저: {{galldata[4][0]}}</h1>
-    <h1>겔러리 생성일: {{ galldata[1] }}</h1>
+    <h1>갤러리 생성일: {{ galldata[1] }}</h1>
     <hr>
     <a href="/post/article/{{galldata[3]}}">글 쓰기</a>
     {% if articlelist %}
@@ -27,7 +27,7 @@
             </tfoot>
         </table>
     {% else %}
-    <h1>이 겔러리에는 게시글이 없습니다.</h1>
+    <h1>이 갤러리에는 게시글이 없습니다.</h1>
     {% endif %}
 </div>
 {% endblock %}

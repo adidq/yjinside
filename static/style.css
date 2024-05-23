@@ -1,5 +1,7 @@
 main, footer {
     margin: 1%;
+    display: flex;
+    justify-content: center;
 }
 
 :root {
@@ -8,4 +10,9 @@ main, footer {
 
 .navbar {
     background-color: var(--bulma-yangjae);
+}
+
+article {
+    display: flex;
+    justify-content: center;
 }
