@@ -19,9 +19,5 @@ app.register_blueprint(routes.edit._edit)
 import routes.post
 app.register_blueprint(routes.post._post)
 
-if __name__ == '__main__':
-    app.run(debug=True)
-
-
 
 
